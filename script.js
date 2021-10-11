@@ -7,6 +7,7 @@ var projectFormEl = $('#project-form');
 // var projectTypeInputEl = $('#project-type-input');
 // var hourlyRateInputEl = $('#hourly-rate-input');
 // var dueDateInputEl = $('#due-date-input');
+var hourDisplayEl = $('#hour-display');
 
 // handle displaying the time
 function displayTime() {
@@ -14,7 +15,19 @@ function displayTime() {
   timeDisplayEl.text(rightNow);
 }
 
-// handle printing project data to the page
+function changeGray (event) {
+  event.currentTarget.setAttribute(
+    "style",
+    "background-color: blue"
+  );
+}
+
+function displayHour() {
+  var displayHour = moment({hour: 9});
+  hourDisplayEl.text(moment({hour: 9}));
+}
+
+
 function printProjectData(name, type, hourlyRate, dueDate) {
   var projectRowEl = $('<tr>');
 
@@ -87,3 +100,4 @@ projectDisplayEl.on('click', '.delete-project-btn', handleDeleteProject);
 // dueDateInputEl.datepicker({ minDate: 1 });
 
 setInterval(displayTime, 1000);
+setInterval(displayHour, 1000);
